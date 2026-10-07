@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="阿卷的个人主页：前端学习者，在这里记录我做过的项目、技能栈和联系方式。"
+    />
+    <meta name="author" content="阿卷" />
+    <meta name="theme-color" content="#f5f7fb" />
+    <title>阿卷 · 个人主页</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!--
+      在样式表之前同步确定主题，避免深色模式用户看到一瞬间的白屏。
+      同时给页面根元素打上 js 标记，让滚动动画只在脚本可用时启用。
+    -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+            .matches;
+          root.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+        } catch (error) {
+          root.dataset.theme = 'light';
+        }
+      })();
+    </script>
+
+    <script src="js/main.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <!-- ==================== 顶部导航 ==================== -->
+    <header class="site-header" id="siteHeader">
+      <div class="container site-header__inner">
+        <a class="logo" href="#home">
+          <span class="logo__mark" aria-hidden="true">A</span>
+          <span>阿卷</span>
+        </a>
+
+        <nav class="nav" id="primaryNav" aria-label="主导航">
+          <ul class="nav__list">
+            <li><a class="nav__link" href="#home">首页</a></li>
+            <li><a class="nav__link" href="#projects">项目</a></li>
+            <li><a class="nav__link" href="#about">关于</a></li>
+            <li><a class="nav__link" href="#skills">技能</a></li>
+            <li><a class="nav__link" href="#contact">联系</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-header__actions">
+          <button
+            class="icon-btn"
+            id="themeToggle"
+            type="button"
+            aria-label="切换到深色模式"
+            aria-pressed="false"
+          >
+            <span data-theme-icon aria-hidden="true">🌙</span>
+          </button>
+
+          <button
+            class="icon-btn nav-toggle"
+            id="navToggle"
+            type="button"
+            aria-label="打开导航菜单"
+            aria-expanded="false"
+            aria-controls="primaryNav"
+          >
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ==================== 首屏 ==================== -->
+      <section class="hero" id="home">
+        <div class="container hero__inner">
+          <div class="hero__content" data-reveal>
+            <p class="hero__eyebrow">👋 你好，我是</p>
+            <h1 class="hero__title">
+              阿卷<span class="hero__title-dot">.</span>
+            </h1>
+            <p class="hero__subtitle">研一学生 · 前端学习者</p>
+            <p class="hero__intro">
+              我正在从零开始做能真正用起来的 Web
+              应用：先把 HTML / CSS / JavaScript
+              的基础打扎实，再一步步走向工程化和框架。这里记录了我做过的项目，以及踩过的坑。
+            </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#projects">查看项目</a>
+              <a class="btn btn--ghost" href="#contact">联系我</a>
+            </div>
+
+            <ul class="hero__meta">
+              <li>📍 中国 · 上海</li>
+              <li>🎓 计算机科学与技术</li>
+              <li>💼 正在寻找前端实习</li>
+            </ul>
+          </div>
+
+          <div class="hero__avatar" data-reveal>
+            <img
+              class="avatar"
+              src="assets/avatar.svg"
+              width="240"
+              height="240"
+              alt="阿卷的头像"
+            />
+            <span class="hero__badge">正在学 TypeScript</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 项目经历 ==================== -->
+      <section class="section" id="projects">
+        <div class="container">
+          <header class="section__header" data-reveal>
+            <p class="section__eyebrow">Projects</p>
+            <h2 class="section__title">项目经历</h2>
+            <p class="section__desc">
+              下面是我一个人动手做的几个作品。数量不多，但每一个都尽量做到真的能用、以后还能看懂。
+            </p>
+          </header>
+
+          <div class="project-list">
+            <article class="project-card" data-reveal>
+              <h3 class="project-card__title">个人主页</h3>
+              <p class="project-card__desc">
+                你正在看的这个页面。手写 HTML 与
+                CSS，不依赖任何框架，支持深色模式、手机端折叠导航和键盘访问。
+              </p>
+              <ul class="tag-list">
+                <li class="tag">HTML5</li>
+                <li class="tag">CSS 变量</li>
+                <li class="tag">JavaScript</li>
+              </ul>
+              <div class="project-card__links">
+                <a class="link" href="#home">在线预览 ↗</a>
+                <a
+                  class="link"
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >源码 ↗</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card" data-reveal>
+              <h3 class="project-card__title">待办清单 Todo</h3>
+              <p class="project-card__desc">
+                支持新增、筛选、删除与拖拽排序，数据存在浏览器本地，刷新页面也不会丢；练习了数组操作和
+                localStorage。
+              </p>
+              <ul class="tag-list">
+                <li class="tag">JavaScript</li>
+                <li class="tag">localStorage</li>
+                <li class="tag">拖拽排序</li>
+              </ul>
+              <div class="project-card__links">
+                <a
+                  class="link"
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >在线预览 ↗</a
+                >
+                <a
+                  class="link"
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >源码 ↗</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card" data-reveal>
+              <h3 class="project-card__title">天气卡片</h3>
+              <p class="project-card__desc">
+                调用公开天气接口展示实时天气，重点练习了 fetch
+                请求、异步流程，以及网络出错时该怎么给用户提示。
+              </p>
+              <ul class="tag-list">
+                <li class="tag">fetch</li>
+                <li class="tag">异步编程</li>
+                <li class="tag">接口调试</li>
+              </ul>
+              <div class="project-card__links">
+                <a
+                  class="link"
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >在线预览 ↗</a
+                >
+                <a
+                  class="link"
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >源码 ↗</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 关于我 ==================== -->
+      <section class="section" id="about">
+        <div class="container">
+          <header class="section__header" data-reveal>
+            <p class="section__eyebrow">About</p>
+            <h2 class="section__title">关于我</h2>
+          </header>
+
+          <div class="about">
+            <div class="about__text" data-reveal>
+              <p>
+                我是阿卷，计算机专业研一学生。本科阶段接触过一些编程课，但真正开始认真写前端是从去年冬天开始的——那时候我连
+                CSS 的盒模型都还讲不清楚，现在总算能独立做出一个像样的页面。
+              </p>
+              <p>
+                我习惯「边做边学」：先定一个具体的小目标（比如给页面加上深色模式），遇到不会的去查资料、动手验证，再把过程整理成笔记。这个小站就是其中一次练习的产物。
+              </p>
+              <p>
+                接下来我打算往工程化方向走：把 TypeScript 和
+                React 补上，然后尝试参与开源项目。如果你也在学前端，欢迎一起交流。
+              </p>
+            </div>
+
+            <ul class="fact-list" data-reveal>
+              <li class="fact-list__item">
+                <span class="fact-list__label">现居</span>
+                <span class="fact-list__value">上海</span>
+              </li>
+              <li class="fact-list__item">
+                <span class="fact-list__label">专业</span>
+                <span class="fact-list__value">计算机科学与技术</span>
+              </li>
+              <li class="fact-list__item">
+                <span class="fact-list__label">方向</span>
+                <span class="fact-list__value">前端开发</span>
+              </li>
+              <li class="fact-list__item">
+                <span class="fact-list__label">在学</span>
+                <span class="fact-list__value">TypeScript · React</span>
+              </li>
+              <li class="fact-list__item">
+                <span class="fact-list__label">爱好</span>
+                <span class="fact-list__value">跑步 · 摄影</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 技能 ==================== -->
+      <section class="section" id="skills">
+        <div class="container">
+          <header class="section__header" data-reveal>
+            <p class="section__eyebrow">Skills</p>
+            <h2 class="section__title">技能</h2>
+            <p class="section__desc">
+              写着「正在学」的部分就真的是正在学，还在慢慢变熟。
+            </p>
+          </header>
+
+          <div class="skill-groups">
+            <div class="skill-group" data-reveal>
+              <h3 class="skill-group__title">基础</h3>
+              <ul class="tag-list">
+                <li class="tag">HTML5</li>
+                <li class="tag">CSS3</li>
+                <li class="tag">Flex / Grid 布局</li>
+                <li class="tag">响应式设计</li>
+                <li class="tag">JavaScript ES6+</li>
+                <li class="tag">DOM 操作</li>
+              </ul>
+            </div>
+
+            <div class="skill-group" data-reveal>
+              <h3 class="skill-group__title">工具</h3>
+              <ul class="tag-list">
+                <li class="tag">Git / GitHub</li>
+                <li class="tag">VS Code</li>
+                <li class="tag">Chrome DevTools</li>
+                <li class="tag">Vite</li>
+                <li class="tag">npm</li>
+              </ul>
+            </div>
+
+            <div class="skill-group" data-reveal>
+              <h3 class="skill-group__title">正在学</h3>
+              <ul class="tag-list">
+                <li class="tag">TypeScript</li>
+                <li class="tag">React</li>
+                <li class="tag">Node.js</li>
+                <li class="tag">自动化测试</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 联系方式 ==================== -->
+      <section class="section" id="contact">
+        <div class="container">
+          <header class="section__header" data-reveal>
+            <p class="section__eyebrow">Contact</p>
+            <h2 class="section__title">联系我</h2>
+            <p class="section__desc">
+              有实习机会、项目合作，或者只是想聊聊前端，都可以直接找我。
+            </p>
+          </header>
+
+          <div class="contact">
+            <div data-reveal>
+              <ul class="contact__list">
+                <li class="contact__item">
+                  <span class="contact__icon" aria-hidden="true">✉️</span>
+                  <a class="link" href="mailto:ajuan@example.com"
+                    >ajuan@example.com</a
+                  >
+                </li>
+                <li class="contact__item">
+                  <span class="contact__icon" aria-hidden="true">🐙</span>
+                  <a
+                    class="link"
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >GitHub</a
+                  >
+                </li>
+                <li class="contact__item">
+                  <span class="contact__icon" aria-hidden="true">💬</span>
+                  <span>微信：ajuan_wechat</span>
+                </li>
+                <li class="contact__item">
+                  <span class="contact__icon" aria-hidden="true">⏰</span>
+                  <span>一般 24 小时内回复</span>
+                </li>
+              </ul>
+            </div>
+
+            <form
+              class="contact-form"
+              id="contactForm"
+              data-email="ajuan@example.com"
+              novalidate
+            >
+              <div class="field">
+                <label class="field__label" for="name">你的称呼</label>
+                <input
+                  class="field__input"
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="怎么称呼你？"
+                  autocomplete="name"
+                  aria-describedby="nameError"
+                />
+                <p
+                  class="field__error"
+                  id="nameError"
+                  data-error-for="name"
+                  hidden
+                ></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="email">你的邮箱</label>
+                <input
+                  class="field__input"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="name@example.com"
+                  autocomplete="email"
+                  aria-describedby="emailError"
+                />
+                <p
+                  class="field__error"
+                  id="emailError"
+                  data-error-for="email"
+                  hidden
+                ></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="message">想说的话</label>
+                <textarea
+                  class="field__input"
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="简单说说你的想法……"
+                  aria-describedby="messageError"
+                ></textarea>
+                <p
+                  class="field__error"
+                  id="messageError"
+                  data-error-for="message"
+                  hidden
+                ></p>
+              </div>
+
+              <button class="btn btn--primary" type="submit">发送邮件</button>
+              <p
+                class="contact-form__status"
+                id="formStatus"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p>
+          © <span id="currentYear">2026</span> 阿卷 · 用 HTML / CSS / JavaScript
+          手写
+        </p>
+        <ul class="site-footer__links">
+          <li>
+            <a
+              class="link"
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </li>
+          <li><a class="link" href="mailto:ajuan@example.com">邮箱</a></li>
+          <li><a class="link" href="#home">回到顶部</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <button
+      class="back-to-top"
+      id="backToTop"
+      type="button"
+      aria-label="返回顶部"
+      hidden
+    >
+      ↑
+    </button>
+  </body>
+</html>
